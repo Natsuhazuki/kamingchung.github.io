@@ -114,12 +114,12 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/article/TypeScript-3-6-Beta-发布/" itemprop="url">TypeScript 3.6 Beta 发布</a>
+            <a href="/article/ts-3.6-beta/" itemprop="url">[译] TypeScript 3.6 Beta 发布</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-08-09T13:58:38.000Z" itemprop="datePublished">Aug 9 2019</time>
+            <time datetime="2019-08-09T14:00:00.000Z" itemprop="datePublished">Aug 9 2019</time>
         </span>
         
         <span class="column is-narrow article-category">
@@ -131,13 +131,16 @@
         <span class="column is-narrow">
             
             
-            15 minutes read (About 2323 words)
+            16 minutes read (About 2342 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p> 今天我们很高兴地宣布 TypeScript 3.6 Beta 已经可以获取并使用。这个 beta 版本包含 TypeScript 3.6 的完整功能。在接下来的几周里我们会修复 bugs 同时增强候选正式版本的性能与稳定性，最终发布正式版本。</p>
+        <blockquote>
+<p>原文：<a href="https://devblogs.microsoft.com/typescript/announcing-typescript-3-6-beta/" target="_blank" rel="noopener">https://devblogs.microsoft.com/typescript/announcing-typescript-3-6-beta/</a></p>
+</blockquote>
+<p> 今天我们很高兴地宣布 TypeScript 3.6 Beta 已经可以获取并使用。这个 beta 版本包含 TypeScript 3.6 的完整功能。在接下来的几周里我们会修复 bugs 同时增强候选正式版本的性能与稳定性，最终发布正式版本。</p>
 <p>要开始使用这个 beta 版本，你可以通过 <a href="https://www.nuget.org/packages/Microsoft.TypeScript.MSBuild" target="_blank" rel="noopener">NuGet</a> 或者执行以下的 npm 命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript@beta</span><br></pre></td></tr></table></figure>
 <p>获得编辑器支持：</p>
@@ -185,7 +188,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getCuteAnimals</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fetch(<span class="string">"https://reddit.com/r/aww.json"</span>)</span><br><span class="line">        .json()</span><br><span class="line">    <span class="comment">//   ~~~~</span></span><br><span class="line">    <span class="comment">// 在 Promise&lt;Response&gt; 类型中不存在 json 属性。</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// 你是否忘记使用 await？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样做的目的是，当用户忘记了 <code>await</code>，至少这些信息能提供提供一个背景告诉我们怎么做。</p>
 <p>不仅仅是提供发现的可能性，为了使你的生活更轻松点，除了提供对 <code>Promise</code> 更好的错误消息之外，我们在某些场景提供了快速修复：</p>
-<img src="/article/TypeScript-3-6-Beta-发布/add-missing-await-ts-36.gif" title="快速修复">
+<img src="/article/ts-3.6-beta/add-missing-await-ts-36.gif" title="快速修复">
 <p>更多细节，见<a href="https://github.com/microsoft/TypeScript/issues/30646" target="_blank" rel="noopener">最初的 issue</a> 以及连接到它的 PR。</p>
 <h1 id="可感知分号的代码编辑"><a href="#可感知分号的代码编辑" class="headerlink" title="可感知分号的代码编辑"></a>可感知分号的代码编辑</h1><p>Visual Studio 和 Visual Studio Code 这样的编辑器可以自动应用快速修复、重构和像自动从其他模块插入值等其他转换。这些转换是由 TypeScript 提供的，旧版本的 TypeScript 就无条件地添加分号到语句的结尾，但很可惜的是，它与很多用户所使用的代码风格指南不合，同时很多用户对编辑器插入分号感到不爽。</p>
 <p>TypeScript 现在足够智能，在应用这些修改时，能够检测你的文件是否使用了分号。如果你的文件大体上缺少分号，TypeScript 就不会添加。</p>
